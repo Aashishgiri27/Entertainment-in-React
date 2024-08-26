@@ -24,7 +24,7 @@ const navitem=[{
 function Header() {
    
 const location=useLocation()
-console.log(location)
+// console.log(location)
 
   return (
     <div className="h-16 w-4/5  mx-auto rounded-xl border-slate-500  flex flex-row justify-around animate__animated animate__slideInLeft">{

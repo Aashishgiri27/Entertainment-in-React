@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react"
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { useNavigate } from "react-router-dom";
 
 
 function Apiup() {
@@ -24,6 +25,10 @@ useEffect(()=>{
         console.log(nowplaying) 
          setdata(nowplaying.results)
  } 
+ const navigate = useNavigate();
+ const handleonclick=(item)=>{
+   navigate(`/moviename/${item.id}`)
+ }
   return (
     <>
 
@@ -33,7 +38,8 @@ useEffect(()=>{
     {
          data.map((item,index)=>(
 			// <AnimationOnScroll animateIn="animate__fadeInUp animate__fast">
-            <div className="h-96 w-72 mt-3 ml-8  rounded-3xl border-blue-400 border-2 shadow-2xl shadow-blue-300 animate__animated animate__fadeInUp"key={index} >
+            
+            <div className="h-96 w-72 mt-3 ml-8  rounded-3xl border-blue-400 border-2 shadow-2xl shadow-blue-300 animate__animated animate__fadeInUp"key={index} onClick={() => handleonclick(item)}>
                 <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" className="h-80 w-72 rounded-t-3xl "/>
                 <div className="text-white h-16  rounded-b-3xl flex flex-row justify-between items-center rounded-t-3x">
                     <h3 className="pl-2 text-xl">{item.title}</h3>

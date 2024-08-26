@@ -1,21 +1,111 @@
-import React from 'react'
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Actors from "./Actors";
 function Search() {
+  const { id } = useParams();
+  const [data, setdata] = useState("");
+  const [image, setimage] = useState("");
+  const [trailer, settrailer] = useState("");
+
+  useEffect(() => {
+    searchmoviedetail(id);
+  }, [id]);
+
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw",
+    },
+  };
+  async function searchmoviedetail(id) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=ed37e133d0447974c7f53d47a4de1d82&language=en-US`,
+      options
+    );
+    const dataresponse = await response.json();
+    setdata(dataresponse);
+
+    // for creating poster image of movie
+    var imagedata = `https://image.tmdb.org/t/p/original/${dataresponse.poster_path}`;
+    setimage(imagedata);
+
+    //for creating trailer of movie
+    const responseoftrailer = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=ed37e133d0447974c7f53d47a4de1d82&language=en-US`,
+      options
+    );
+    const roftrailer = await responseoftrailer.json();
+    // console.log(roftrailer);
+    if (roftrailer.results.length > 0) {
+      var trailerofmovie = "Trailer";
+      for (var i = 0; i < roftrailer.results.length; i++) {
+        if (roftrailer.results[i].type == trailerofmovie) {
+          var movietrailerkey = `https://www.youtube.com/embed/${roftrailer.results[i].key}?`;
+          settrailer(movietrailerkey);
+        }
+      }
+    }
+  }
+  console.log(data);
+
   return (
-    <div>
-      <div>
-        <div className='h-96 w-96 border border-black '><img src="" alt="" /></div>
-        <div>
-            <h1>DESCRIPTION</h1>
-            <div></div>
-            <h1>TRAILER</h1>
-            <div></div>
-            <h1>ACTORS</h1>
-            <div></div>
+    <div
+      className="bg-white"
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="flex flex-row mx-auto w-5/6 h-3/4 justify-between ">
+         {/* poster and name of movie */}
+        <div className=" w-96 h-5/6  mr-10 my-auto  rounded-3xl border-blue-400 border-2 shadow-xl shadow-blue-300">
+          <img className="h-auto w-auto rounded-3xl" src={image} alt="" />
+          <div className="flex flex-row justify-between h-16 ">
+            <p className="text-white text-center content-center text-3xl">{data.original_title}</p>
+            <div className="h-14 w-14 bg-blue-400 text-center content-center rounded-full">{data.vote_average}</div>
+          </div>
+
+          {/* description of moviename */}
+        </div>
+        <div className="w-2/3 my-8">
+          <h1 className="bg-blue-400 w-full text-center text-2xl rounded-lg">DESCRIPTION</h1>
+          <div className="my-8">
+            <div className="text-white text-lg mb-4">{data.overview}</div>
+            <div className="flex flex-row justify-between"> 
+            <div className="text-white w-80 bg-sky-500 text-center rounded-2xl"><b className="text-black text-xl">RELEASE DATE :-</b>{data.release_date} </div>
+            <div className="text-white  w-80 bg-sky-500 text-center rounded-2xl">
+              <b className="text-black text-xl"> LANGUAGE :-</b>
+              {data.spoken_languages && data.spoken_languages.length > 0
+                ? data.spoken_languages[0].english_name
+                : "N/A"}
+            </div>
+            </div>
+          </div>
+
+          {/* tailer of movie */}
+          <h1 className="bg-blue-400 w-full text-center text-2xl rounded-lg">TRAILER</h1>
+          <div className="my-6 flex flex-row justify-center content-center">
+            <iframe 
+              width="400"
+              height="250"
+              src={trailer}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <Actors id={id} options={options} />
         </div>
       </div>
+   
     </div>
-  )
+  );
 }
 
-export default Search
+export default Search;

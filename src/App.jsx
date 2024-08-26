@@ -13,13 +13,21 @@ import { Route } from 'react-router-dom';
 import 'animate.css';
 import Apiup from "./component/Apiup";
 import Toprated from "./component/Toprated";
+import Search from "./component/Search";
 // import Apiup from "./component/Apiup";
 
 
 const App =()=>{
   return(
     <>
-      <h1 className="text-4xl pt-1 mb-2 font-bold text-white text-center animate__animated animate__slideInRight ">WATCHMOVIES</h1>
+      <h1 className="text-4xl pt-1 mb-2 font-bold text-white text-center animate__animated animate__slideInRight "
+      style={{ backgroundImage: 'url(https://media.geeksforgeeks.org/wp-content/uploads/20231218224644/w.jpg)',
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        color: "transparent",
+        backgroundClip: "text",
+        webkitBackgroundClip: "text"}}>WATCHMOVIES</h1>
       
       <Header/>
       <Genresection/>
@@ -27,6 +35,7 @@ const App =()=>{
       
          <Routes>
           <Route path="/" element={<Item/>}></Route>
+          <Route path="/moviename/:id" element={<Search/>}></Route>
           <Route path="/Apiup" element={<Apiup/>}></Route>
           <Route path="/Toprated" element={<Toprated/>}></Route>
 
