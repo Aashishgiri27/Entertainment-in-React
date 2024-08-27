@@ -30,10 +30,10 @@ function handledata(id,name){
  navigate(`/${name}/${id}`)
 }
   return (
-    <div className="m-auto w-3/5 mb-4 grid grid-cols-7 grid-rows-2 gap-x-2 gap-y-3 animate__animated animate__fadeInDown  animate__slower">
+    <div className="m-auto w-2/3 mb-4 grid grid-cols-7 grid-rows-2 gap-x-2 gap-y-3 ">
        {
          data.map((item)=>(
-            <div className="h-6 w-28 border-slate-900 text-center content-center rounded-3xl font-medium bg-orange-300" onClick={()=>handledata(item.id,item.name)}>{item.name}</div>
+            <div className="h-6 w-32 text-center text-white content-center shadow-xl shadow-orange-500/50  rounded-3xl font-medium bg-orange-700 border-2 border-red-500" onClick={()=>handledata(item.id,item.name)}>{item.name}</div>
          ))
        
        }

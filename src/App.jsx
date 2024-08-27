@@ -1,7 +1,9 @@
 import Header from "./component/Header"
-import Container from "./component/Container";
+// import Container from "./component/Container";
 import Item from "./component/Item";
 import Genresection from "./component/Genresection";
+import sun from "./image/sun.png"
+import dark from "./image/dark.png"
 
 
 // import {BrowserRouter,Routes,Route} from "react-router-dom"
@@ -16,13 +18,20 @@ import Toprated from "./component/Toprated";
 import Search from "./component/Search";
 import Genrebody from "./component/Genrebody";
 import Searchmovie from "./component/Searchmovie";
+import { useState } from "react";
+import Footer from "./component/Footer";
 // import Apiup from "./component/Apiup";
 
 
 const App =()=>{
+  const [data,setdata]=useState(true)
+  function change(){
+    setdata(!data)
+  }
   return(
-    <>
-      <h1 className="text-4xl pt-1 mb-2 font-bold text-white text-center animate__animated animate__slideInRight "
+    <div style={{backgroundColor:data?"white":"black"}}>
+      <div className="flex flex-row ">
+      <h1 className="text-5xl pt-1 w-full mb-2 font-bold text-white text-center animate__animated animate__slideInRight "
       style={{ backgroundImage: 'url(https://media.geeksforgeeks.org/wp-content/uploads/20231218224644/w.jpg)',
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -30,7 +39,8 @@ const App =()=>{
         color: "transparent",
         backgroundClip: "text",
         webkitBackgroundClip: "text"}}>WATCHMOVIES</h1>
-      
+      <img aria-hidden="true" alt="service" src={data?dark:sun} className="h-12 w-12" onClick={change}/>
+      </div>
       <Header/>
       <Genresection/>
       {/* <Container/> */}
@@ -48,9 +58,9 @@ const App =()=>{
 
          </Routes>
       
-
+        <Footer/>
     
-    </>
+    </div>
   )
 }
 export default App

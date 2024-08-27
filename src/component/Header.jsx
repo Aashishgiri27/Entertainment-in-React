@@ -14,45 +14,52 @@ const navitem=[{
 {
   label:"Top-Rated",
   href:'/Toprated'
-},
-{
-  label:"T.V Show",
- href:'/Tvshow'
 }
+// {
+//   label:"T.V Show",
+//  href:'/Tvshow'
+// }
 ]
 
 function Header() {
    
 const location=useLocation()
 const [inputdata,setinputdata]=useState("")
-function handlechange(e){
 
+function handlechange(e){
 setinputdata(e.target.value)
 }
+
 const navigate=useNavigate()
 function submit(e){
   e.preventDefault();
   navigate(`/${inputdata}`);
 }
 
+function handleKeyPress(e) {
+  if (e.key === 'Enter') {
+    submit(e);
+  }
+}
+
   return (
-    <div className="h-16 w-4/5  mx-auto rounded-xl border-slate-500  flex flex-row justify-around animate__animated animate__slideInLeft">{
+    <table className="h-12 w-5/6 bg-orange-300 mx-auto mb-4 rounded-xl border-slate-500  flex flex-row justify-around ">{
       navitem.map((item,index)=>(
-        <div key={index}>
-           <div className="h-10 w-32 text-lg font-medium text-white text-center content-center  border-white  my-auto ">
+        <tr key={index}>
+           <td className="h-10 w-32 text-lg font-medium text-white text-center content-center  border-white  my-auto ">
                   
-                  <Link to={item.href} style={{ borderBottom: location.pathname === item.href ? '2px solid blue' : 'transparent'}} >{item.label}</Link>
-            </div>
-        </div>
+                  <Link to={item.href} style={{ color: location.pathname === item.href ? ' blue' : 'white'}} >{item.label}</Link>
+            </td>
+        </tr>
       ))
     }
       
  
-      <div className='content-center'>
-         <input type="search" name="search movie" id="" className='h-8 w-64 border-4 pl-4 rounded-xl ' onChange={handlechange} />
-         <button type="button" className='ml-4 w-20 text-white bg-blue-600 rounded border-2 border-white ' onClick={submit}>Seach</button>
-     </div>
-    </div>
+      <td className='content-center'>
+         <input type="search" name="search movie" id="" className='h-8 w-64 border-4 pl-4 rounded-xl ' placeholder='Search Movie...' onChange={handlechange}  onKeyDown={handleKeyPress} />
+         <button type="button" className='ml-4 w-24  rounded-lg bg-cyan-500 shadow-lg shadow-cyan-500/50' onClick={submit}>Search</button>
+     </td>
+    </table>
   )
 }
 

@@ -51,8 +51,12 @@ function Search() {
   }
 
   return (
+    <>
+    <h1 className="text-black text-4xl text-center bg-stone-300 border-2 mx-2 mb-1 rounded-2xl shadow-2xl shadow-blue-500/60  ">
+    {data.original_title}
+  </h1>
     <div
-      className="bg-white"
+      className="bg-white shadow-2xl shadow-cyan-500/50"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
         backgroundSize: "cover",
@@ -60,8 +64,10 @@ function Search() {
         backgroundRepeat: "no-repeat",
       }}
     >
+        
       <div className="flex flex-row mx-auto w-5/6 h-3/4 justify-between ">
          {/* poster and name of movie */}
+       
         <div className=" w-96 h-5/6  mr-10 my-auto  rounded-3xl border-blue-400 border-2 shadow-xl shadow-blue-300">
           <img className="h-auto w-auto rounded-3xl" src={image} alt="" />
           <div className="flex flex-row justify-between h-16 ">
@@ -105,6 +111,7 @@ function Search() {
       </div>
    
     </div>
+    </>
   );
 }
 

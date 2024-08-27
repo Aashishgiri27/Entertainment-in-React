@@ -31,7 +31,7 @@ function Genrebody() {
     }
   return (
     <>
-    <h1 className="text-black text-4xl text-center bg-stone-300 border-2 mx-2 mb-1 rounded-2xl shadow-2xl shadow-blue-500/60  animate__animated animate__slideInRight">
+    <h1 className="text-black text-4xl text-center bg-stone-300 border-2 mx-2 mb-1 rounded-2xl shadow-2xl shadow-blue-500/60 ">
     {name}
     </h1>
 
@@ -39,7 +39,7 @@ function Genrebody() {
       {data.map((item, index) => (
         // {/* // <AnimationOnScroll animateIn="animate__fadeInUp animate__fast"> */}
         <div
-          className="h-96 w-72 mt-3 ml-8  rounded-3xl border-blue-400 border-2 shadow-2xl shadow-blue-300 animate__animated animate__fadeInUp"
+          className="h-96 w-72 mt-3 ml-8  rounded-3xl border-blue-400 border-2 shadow-2xl shadow-blue-300 "
           key={index}
           onClick={() => handleonclick(item.id)}
         >
@@ -48,7 +48,7 @@ function Genrebody() {
             alt=""
             className="h-80 w-72 rounded-t-3xl "
           />
-          <div className="text-white h-16  rounded-b-3xl flex flex-row justify-between items-center rounded-t-3x">
+          <div className="text-white h-16 bg-black rounded-b-3xl flex flex-row justify-between items-center rounded-t-3x">
             <h3 className="pl-2 text-xl">{item.title}</h3>
             <div className="h-10 w-10 bg-blue-400 text-center content-center rounded-3xl">
               {item.vote_average}
