@@ -25,6 +25,7 @@ function Search() {
       options
     );
     const dataresponse = await response.json();
+    // console.log(dataresponse)
     setdata(dataresponse);
 
     // for creating poster image of movie
@@ -37,7 +38,7 @@ function Search() {
       options
     );
     const roftrailer = await responseoftrailer.json();
-    // console.log(roftrailer);
+    
     if (roftrailer.results.length > 0) {
       var trailerofmovie = "Trailer";
       for (var i = 0; i < roftrailer.results.length; i++) {
@@ -48,7 +49,6 @@ function Search() {
       }
     }
   }
-  console.log(data);
 
   return (
     <div

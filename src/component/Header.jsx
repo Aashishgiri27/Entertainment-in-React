@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'animate.css';
-import {Link, useLocation} from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 
 
 const navitem=[{
@@ -24,7 +24,16 @@ const navitem=[{
 function Header() {
    
 const location=useLocation()
-// console.log(location)
+const [inputdata,setinputdata]=useState("")
+function handlechange(e){
+
+setinputdata(e.target.value)
+}
+const navigate=useNavigate()
+function submit(e){
+  e.preventDefault();
+  navigate(`/${inputdata}`);
+}
 
   return (
     <div className="h-16 w-4/5  mx-auto rounded-xl border-slate-500  flex flex-row justify-around animate__animated animate__slideInLeft">{
@@ -40,8 +49,8 @@ const location=useLocation()
       
  
       <div className='content-center'>
-         <input type="search" name="search movie" id="" className='h-8 w-64 border-4 pl-4 rounded-xl ' />
-         <button type="button" className='ml-4 w-20 text-white bg-blue-600 rounded border-2 border-white '>Seach</button>
+         <input type="search" name="search movie" id="" className='h-8 w-64 border-4 pl-4 rounded-xl ' onChange={handlechange} />
+         <button type="button" className='ml-4 w-20 text-white bg-blue-600 rounded border-2 border-white ' onClick={submit}>Seach</button>
      </div>
     </div>
   )

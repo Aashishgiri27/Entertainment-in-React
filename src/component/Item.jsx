@@ -36,7 +36,6 @@ const Item = () => {
     navigate(`/moviename/${item.id}`)
   }
 
-  //  apinowplaying()
   return (
     <>
       <h1 className="text-black text-4xl text-center bg-stone-300 border-2 mx-2 mb-1 rounded-2xl shadow-2xl shadow-blue-500/60  animate__animated animate__slideInRight">

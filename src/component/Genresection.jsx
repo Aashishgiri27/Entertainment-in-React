@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-import Create from './Create';
+import Create from './Searchmovie';
+import { useNavigate } from 'react-router-dom';
 
 function Genresection() {
 
@@ -20,13 +21,19 @@ const [data,setdata]=useState([])
         const genre=await response.json()
          setdata(genre.genres)
  } 
+
 apigenre()
 
+const navigate=useNavigate()
+
+function handledata(id,name){
+ navigate(`/${name}/${id}`)
+}
   return (
     <div className="m-auto w-3/5 mb-4 grid grid-cols-7 grid-rows-2 gap-x-2 gap-y-3 animate__animated animate__fadeInDown  animate__slower">
        {
          data.map((item)=>(
-            <div className="h-6 w-28 border-slate-900 text-center content-center rounded-3xl font-medium bg-orange-300" >{item.name}</div>
+            <div className="h-6 w-28 border-slate-900 text-center content-center rounded-3xl font-medium bg-orange-300" onClick={()=>handledata(item.id,item.name)}>{item.name}</div>
          ))
        
        }

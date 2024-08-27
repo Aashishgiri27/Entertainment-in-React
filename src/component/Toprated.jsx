@@ -21,7 +21,7 @@ function Toprated() {
      const apinowplaying = async()=>{
             const response= await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=ed37e133d0447974c7f53d47a4de1d82',options)
             const nowplaying=await response.json()
-            console.log(nowplaying) 
+            // console.log(nowplaying) 
              setdata(nowplaying.results)
      } 
      const navigate = useNavigate();

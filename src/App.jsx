@@ -14,6 +14,8 @@ import 'animate.css';
 import Apiup from "./component/Apiup";
 import Toprated from "./component/Toprated";
 import Search from "./component/Search";
+import Genrebody from "./component/Genrebody";
+import Searchmovie from "./component/Searchmovie";
 // import Apiup from "./component/Apiup";
 
 
@@ -36,6 +38,11 @@ const App =()=>{
          <Routes>
           <Route path="/" element={<Item/>}></Route>
           <Route path="/moviename/:id" element={<Search/>}></Route>
+          <Route path="/:name/:id" element={<Genrebody/>}></Route>
+          <Route path="/:name" element={<Searchmovie/>}></Route>
+
+
+
           <Route path="/Apiup" element={<Apiup/>}></Route>
           <Route path="/Toprated" element={<Toprated/>}></Route>
 

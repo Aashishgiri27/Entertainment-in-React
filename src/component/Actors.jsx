@@ -9,7 +9,7 @@ async function actor(id,options)  {
         //for creating the cast and crew of movie
         const responseofimage= await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=ed37e133d0447974c7f53d47a4de1d82&language=en-US`,options)
         const castofimage=await responseofimage.json()
-        console.log(castofimage);
+        // console.log(castofimage);
         setdata(castofimage.cast)
 }
   return (
