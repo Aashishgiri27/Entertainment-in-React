@@ -4,6 +4,8 @@ import Item from "./component/Item";
 import Genresection from "./component/Genresection";
 import sun from "./image/sun.png"
 import dark from "./image/dark.png"
+import Language from './component/Language';
+
 
 
 // import {BrowserRouter,Routes,Route} from "react-router-dom"
@@ -20,6 +22,7 @@ import Genrebody from "./component/Genrebody";
 import Searchmovie from "./component/Searchmovie";
 import { useState } from "react";
 import Footer from "./component/Footer";
+import Movielang from "./component/Movielang";
 // import Apiup from "./component/Apiup";
 
 
@@ -43,6 +46,8 @@ const App =()=>{
       </div>
       <Header/>
       <Genresection/>
+      <Language/>
+
       {/* <Container/> */}
       
          <Routes>
@@ -50,6 +55,7 @@ const App =()=>{
           <Route path="/moviename/:id" element={<Search/>}></Route>
           <Route path="/:name/:id" element={<Genrebody/>}></Route>
           <Route path="/:name" element={<Searchmovie/>}></Route>
+          <Route path="/Language/:fullname/:name" element={<Movielang/>}></Route>
 
 
 

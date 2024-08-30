@@ -25,7 +25,7 @@ function Search() {
       options
     );
     const dataresponse = await response.json();
-    // console.log(dataresponse)
+    console.log(dataresponse)
     setdata(dataresponse);
 
     // for creating poster image of movie

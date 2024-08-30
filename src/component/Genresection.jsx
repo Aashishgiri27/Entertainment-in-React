@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Genresection() {
 
 const [data,setdata]=useState([])
-
+const [colorid,setcolorid]=useState(null)
 
     const options = {
         method: 'GET',
@@ -27,13 +27,16 @@ apigenre()
 const navigate=useNavigate()
 
 function handledata(id,name){
+  setcolorid(id)
  navigate(`/${name}/${id}`)
 }
   return (
     <div className="m-auto w-2/3 mb-4 grid grid-cols-7 grid-rows-2 gap-x-2 gap-y-3 ">
        {
          data.map((item)=>(
-            <div className="h-6 w-32 text-center text-white content-center shadow-xl shadow-orange-500/50  rounded-3xl font-medium bg-orange-700 border-2 border-red-500" onClick={()=>handledata(item.id,item.name)}>{item.name}</div>
+            <div className={`h-6 w-32 text-center content-center shadow-xl shadow-orange-500/50 rounded-3xl font-medium border-2 
+              ${colorid === item.id ? 'bg-red-700 border-orange-500 text-blue-500' : 'bg-orange-700 border-red-500  text-white'}`}
+            onClick={()=>handledata(item.id,item.name)}>{item.name}</div>
          ))
        
        }

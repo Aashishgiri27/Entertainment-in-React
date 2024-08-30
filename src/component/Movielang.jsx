@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
-import "animate.css/animate.min.css";
-import { AnimationOnScroll } from "react-animation-on-scroll";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Item = () => {
+function Movielang() {
+  // const {id}=useParams()
+  const { name } = useParams();
+  const { fullname } = useParams();
+
 
   const [data, setdata] = useState([]);
-
+  // const [dataid,setdataid]=useState(null)
   useEffect(() => {
-    apinowplaying();
-  }, []);
+    language(name);
+  }, [name]);
+
 
   const options = {
     method: "GET",
@@ -19,26 +23,26 @@ const Item = () => {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw",
     },
   };
+  async function language(name) {
 
-  const apinowplaying = async () => {
-    const response = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=ed37e133d0447974c7f53d47a4de1d82",
+    const responseoflanguage = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?api_key=ed37e133d0447974c7f53d47a4de1d82&with_original_language=" +
+        name,
       options
     );
-  
-    const nowplaying = await response.json();
-    // console.log(nowplaying)
-    setdata(nowplaying.results);
-  };
+    const output = await responseoflanguage.json();
+    console.log('data come')
+    console.log(output);
+    setdata(output.results);
+  }
   const navigate = useNavigate();
   const handleonclick=(item)=>{
     navigate(`/moviename/${item.id}`)
   }
-
   return (
     <>
       <h1 className="text-black text-4xl text-center bg-stone-300 border-2 mx-2 mb-1 rounded-2xl shadow-2xl shadow-blue-500/60  ">
-        NOW-PLAYING
+        {fullname}
       </h1>
 
       <div className="grid mx-24 md:grid-cols-4  md:grid-rows-5 gap-y-5">
@@ -66,5 +70,6 @@ const Item = () => {
       </div>
     </>
   );
-};
-export default Item;
+}
+
+export default Movielang;

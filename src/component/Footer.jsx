@@ -10,7 +10,7 @@ function Footer() {
         backgroundPosition: "center",
         color: "transparent",
         backgroundClip: "text",
-        webkitBackgroundClip: "text"}}>WATCHMOVIES</h1>
+        webkitBackgroundClip: "text"}}> WATCHMOVIES </h1>
         <div className='w-3/4 mx-auto text-white text-xl mt-6'>Create a sleek, user-friendly movie recommendation website called <b>WatchMovie</b> . The site should feature a search bar for finding movies by title, genre, or actor. Each movie page should include the title, release date, synopsis, trailer, genres, cast, user ratings, reviews, and streaming options. The homepage should showcase trending movies, upcoming releases, and personalized recommendations. Include options for light/dark mode, social sharing .</div>
     </div>
   )
