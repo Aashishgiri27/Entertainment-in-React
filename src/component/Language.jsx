@@ -49,8 +49,8 @@ async function language(name) {
 
   return (
     <div className="flex flex-row justify-center mb-4">
-      <input type="text" placeholder="Search Language Movie like English,Hindi,Tamil...." id="" className="w-1/2 h-8 border-2 pl-3 border-black" onChange={handleclick}  onKeyDown={handleKeyPress}/>
-      <button type="button" className='ml-4 w-24  rounded-lg bg-cyan-500 shadow-lg shadow-cyan-500/50' onClick={submit}>Search</button>
+      <input type="text" placeholder="Search Language like English,Hindi,Tamil...." id="" className="w-1/2 h-8 border-2 pl-3 border-black max-[600px]:h-6 max-[600px]:text-sm max-[600px]:w-3/4" onChange={handleclick}  onKeyDown={handleKeyPress}/>
+      <button type="button" className='ml-4 w-24  rounded-lg bg-cyan-500 shadow-lg shadow-cyan-500/50 max-[600px]:text-xs max-[600px]:w-20' onClick={submit}>Search</button>
       
     </div>
   );

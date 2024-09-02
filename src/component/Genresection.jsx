@@ -31,10 +31,10 @@ function handledata(id,name){
  navigate(`/${name}/${id}`)
 }
   return (
-    <div className="m-auto w-2/3 mb-4 grid grid-cols-7 grid-rows-2 gap-x-2 gap-y-3 ">
+    <div className="m-auto w-2/3 mb-4 grid grid-cols-7 grid-rows-2 gap-x-2 gap-y-3 max-[600px]:w-full max-[600px]:grid-rows-5 max-[600px]:grid-cols-4  max-[600px]:gap-y-1 max-[600px]:gap-x-0 ">
        {
          data.map((item)=>(
-            <div className={`h-6 w-32 text-center content-center shadow-xl shadow-orange-500/50 rounded-3xl font-medium border-2 
+            <div className={`h-6 w-32 text-center content-center shadow-xl shadow-orange-500/50 rounded-3xl font-medium border-2 max-[600px]:w-auto max-[600px]:text-xs max-[600px]:h-5
               ${colorid === item.id ? 'bg-red-700 border-orange-500 text-blue-500' : 'bg-orange-700 border-red-500  text-white'}`}
             onClick={()=>handledata(item.id,item.name)}>{item.name}</div>
          ))

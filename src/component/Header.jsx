@@ -43,10 +43,10 @@ function handleKeyPress(e) {
 }
 
   return (
-    <table className="h-12 w-5/6 bg-orange-300 mx-auto mb-4 rounded-xl border-slate-500  flex flex-row justify-around ">{
+    <table className="h-12 w-5/6 bg-orange-300 mx-auto mb-4 rounded-xl border-slate-500  flex flex-row justify-around max-[600px]:w-full max-[600px]:h-10 ">{
       navitem.map((item,index)=>(
         <tr key={index}>
-           <td className="h-10 w-32 text-lg font-medium text-white text-center content-center  border-white  my-auto ">
+           <td className="h-10 w-32 text-lg  text-white text-center content-center  border-white  my-auto max-[600px]:text-xs max-[600px]:w-24">
                   
                   <Link to={item.href} style={{ color: location.pathname === item.href ? ' blue' : 'white'}} >{item.label}</Link>
             </td>
@@ -56,8 +56,11 @@ function handleKeyPress(e) {
       
  
       <td className='content-center'>
-         <input type="search" name="search movie" id="" className='h-8 w-64 border-4 pl-4 rounded-xl ' placeholder='Search Movie...' onChange={handlechange}  onKeyDown={handleKeyPress} />
-         <button type="button" className='ml-4 w-24  rounded-lg bg-cyan-500 shadow-lg shadow-cyan-500/50' onClick={submit}>Search</button>
+         <input type="search" name="search movie" id="" className='h-8 w-80 border-4 pl-4 rounded-xl max-[600px]:w-28 max-[600px]:h-5 max-[600px]:text-xs' placeholder='Search Movie...' onChange={handlechange}  onKeyDown={handleKeyPress} />
+     </td>
+     <td className='content-center'>
+     <button type="button" className=' w-24  rounded-lg bg-cyan-500 shadow-lg shadow-cyan-500/50 max-[600px]:w-10 max-[600px]:text-xs ' onClick={submit}>Search</button>
+
      </td>
     </table>
   )

@@ -34,14 +34,15 @@ const App =()=>{
   return(
     <div style={{backgroundColor:data?"white":"black"}}>
       <div className="flex flex-row ">
-      <h1 className="text-5xl pt-1 w-full mb-2 font-bold text-white text-center animate__animated animate__slideInRight "
+      <h1 className="text-5xl pt-1 w-full mb-2 font-bold text-white text-center  max-[600px]:text-3xl  "
       style={{ backgroundImage: 'url(https://media.geeksforgeeks.org/wp-content/uploads/20231218224644/w.jpg)',
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "transparent",
         backgroundClip: "text",
-        webkitBackgroundClip: "text"}}>WATCHMOVIES</h1>
+        webkitBackgroundClip: "text"
+        }}>WATCHMOVIES</h1>
       <img aria-hidden="true" alt="service" src={data?dark:sun} className="h-12 w-12" onClick={change}/>
       </div>
       <Header/>

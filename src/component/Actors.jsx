@@ -14,15 +14,15 @@ async function actor(id,options)  {
 }
   return (
     <div className=''>
-      <h1 className="bg-blue-400 w-full text-center text-2xl rounded-lg">ACTORS</h1>
-      <div className=' flex flex-row overflow-x-auto overflow-y-hidden'>
+      <h1 className="bg-blue-400 w-full text-center text-2xl rounded-lg max-[600px]:text-lg">ACTORS</h1>
+      <div className=' flex flex-row overflow-x-auto overflow-y-hidden '>
         {data.map((item,index)=>(
-            <div className='h-60 w-44 min-w-36 mr-3 mt-6' key={index}>
+            <div className='h-60 w-44 min-w-36 mr-3 b mt-6 max-[600px]:h-40  max-[600px]:min-w-20 max-[600px]:mt-2' key={index}>
             
             <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`} alt="" />
 
 
-            <p className='text-white bg-blue-500 text-sm '>{item.original_name}</p>
+            <p className='text-white bg-blue-500 text-sm max-[600px]:text-xs '>{item.original_name}</p>
         </div>
         ))}
         
