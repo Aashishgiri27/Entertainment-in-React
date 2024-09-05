@@ -31,7 +31,7 @@ const Item = () => {
   return (
     <>
       <h1 className="text-black text-4xl text-center bg-stone-300 border-2 mx-2 mb-1 rounded-2xl shadow-2xl shadow-blue-500/60 max-[600px]:text-2xl">
-        NOW-PLAYING
+        NOW-PLAYINGhi
       </h1>
 
       <div className="grid mx-24 grid-cols-4  grid-rows-5 gap-y-5 max-[600px]:mx-3 max-[600px]:grid-cols-2 max-[600px]:grid-rows-10">
