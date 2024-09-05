@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 function Language() {
 const [data,setdata]=useState("")
 const navigate=useNavigate()
-const options = JSON.parse(import.meta.env.VITE_APP_OPTIONS);
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw",
+  },
+};
 const apiKey = import.meta.env.VITE_APP_APIKEY;
 async function language(name) {
   const response = await fetch( ` https://api.themoviedb.org/3/configuration/languages?api_key=${apiKey}`, options);
