@@ -18,8 +18,9 @@ function Search() {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw",
     },
   };
-  const apiKey = import.meta.env.VITE_APP_APIKEY;
+  
   async function searchmoviedetail(id) {
+    const apiKey = import.meta.env.VITE_APP_APIKEY;
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`,
       options
@@ -34,7 +35,7 @@ function Search() {
 
     //for creating trailer of movie
     const responseoftrailer = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apikey}&language=en-US`,
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`,
       options
     );
     const roftrailer = await responseoftrailer.json();
