@@ -12,15 +12,10 @@ function Genrebody() {
     },[id])
 
 
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw'
-        }
-      };
+    const options = JSON.parse(import.meta.env.VITE_APP_OPTIONS);
+    const apiKey = import.meta.env.VITE_APP_APIKEY;
     async function makingagenrebody(idofgenre){
-        const response= await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=ed37e133d0447974c7f53d47a4de1d82&with_genres=${idofgenre} `,options)
+        const response= await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${idofgenre} `,options)
         const r=await response.json()
         setdata(r.results)
     

@@ -14,25 +14,19 @@ function Movielang() {
     language(name);
   }, [name]);
 
+  const options = JSON.parse(import.meta.env.VITE_APP_OPTIONS);
+  const apiKey = import.meta.env.VITE_APP_APIKEY;
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw",
-    },
-  };
   async function language(name) {
 
     const responseoflanguage = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=ed37e133d0447974c7f53d47a4de1d82&with_original_language=" +
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_original_language=` +
         name,
       options
     );
     const output = await responseoflanguage.json();
-    console.log('data come')
-    console.log(output);
+    // console.log('data come')
+    // console.log(output);
     setdata(output.results);
   }
   const navigate = useNavigate();

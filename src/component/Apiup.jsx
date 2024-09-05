@@ -11,18 +11,13 @@ useEffect(()=>{
     apinowplaying()
 },[])
 
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDM3ZTEzM2QwNDQ3OTc0YzdmNTNkNDdhNGRlMWQ4MiIsInN1YiI6IjY2NTE3ZjljNTFjZGY4ZjViYTk2MDQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ie6A99CdaGdwXIvAviRtdMU2VbN-Zfa3fpRGQIGNGBw'
-        }
-      };
+const options = JSON.parse(import.meta.env.VITE_APP_OPTIONS);
+const apiKey = import.meta.env.VITE_APP_APIKEY;
 
  const apinowplaying = async()=>{
-        const response= await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ed37e133d0447974c7f53d47a4de1d82',options)
+        const response= await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`,options)
         const nowplaying=await response.json()
-        console.log(nowplaying) 
+        // console.log(nowplaying) 
          setdata(nowplaying.results)
  } 
  const navigate = useNavigate();
